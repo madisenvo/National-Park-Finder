@@ -2,7 +2,7 @@
 
 
 ## Description
-We created a webpage that allows a user to click on an interactive map in order to display the state's most popular national park. Our webpage also displays a five-day forecast so that they can prepare for the adventure they will soon embark on. In addition, our webpage will display a few other details about the park such as hours of operation, activites to do, cost and a picture of the park. 
+We created a webpage that allows a user to click on an interactive map in order to display the state's most popular national park with details, such as hours of operation, activites to do, entry costs, and a picture of the park. 
 
 # Usage 
 * When the user views the top of the page they will see our header with links to additional resources and a contributors page.
@@ -14,7 +14,7 @@ We created a webpage that allows a user to click on an interactive map in order 
 ![header with nav bar](assets/images/map.png)
 
 * If the user hovers over the map they will find that this map is interactive and clickable.
-* When the user clicks on the map they will be presented with a famous national park from that selected state, they will also be presented with park information and a 5 day forecast for the area.
+* When the user clicks on the map they will be presented with information on that state's most popular national park.
 
 ![header with nav bar](assets/images/data.png)
 
