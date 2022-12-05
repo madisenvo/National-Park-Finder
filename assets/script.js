@@ -1,6 +1,6 @@
 // variables set
 var parkAPIKey = "pEl7mMX3orgycwe1sObUzotP8ZSa4vTgqOeL8Xf1";
-var weatherAPIKey = "117a7453ee844f288c7182432222509";
+// var weatherAPIKey = "019a7bf4afa5e4a22e320f4131dc54fc";
 var parkinfoContainer = document.getElementById("parkinfo");
 var parkdataContainer = document.getElementById("parkdata");
 var contactContainer = document.getElementById("contactinfo");
@@ -62,43 +62,43 @@ const parksByState = [
     { state: "WY", parkCode: "yell" },
 ];
 
-// takes lat and long from park API and displays forecast for that area
-function getWeatherForecast(lat, long) {
-    var latitude = lat;
-    var longitude = long;
-    let weatherQueryURL = "https://api.weatherapi.com/v1/forecast.json?key=117a7453ee844f288c7182432222509&q=" + latitude + "," + longitude + "&days=5&aqi=no&alerts=no";
-    fetch(weatherQueryURL)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-// creates forecast div
-            let forecastHTML = `
-            <h3>5-Day Forecast</h3>
-            <div ml-10></div>`;
-            data.forecast.forecastday.forEach((dayOfWeek) => {
-                var date = dayOfWeek.date;
-                var icon = dayOfWeek.day.condition.icon;
-                var humidity = dayOfWeek.day.avghumidity;
-                var highTemp = dayOfWeek.day.maxtemp_f;
-                var lowTemp = dayOfWeek.day.mintemp_f;
-// puts data from API into forecast HTML
-                forecastHTML += `
-                <div class="forecast">
-                <ul class="text-sm list-unstyled">
-                <li><h5>${new Date(date).toDateString()}</h5></li>
-                <li><img src="https:${icon}"></li>
-                <li>High: ${highTemp}&#8457;</li>
-                <li>Low: ${lowTemp}&#8457;</li>
-                <li>Humidity: ${humidity}%</li>
-                </ul>
-                </div>`;
-                forecastHTML += `</div>`;
-                $('#forecast-container').html(forecastHTML);
-            })
-        })
-};
-
+// // takes lat and long from park API and displays forecast for that area
+// function getWeatherForecast(lat, long) {
+//     var latitude = lat;
+//     var longitude = long;
+//     let weatherQueryURL = "http://api.openweathermap.org/geo/1.0/reverse?lat=" + latitude + "&lon=" + longitude + "&appid=" + weatherAPIKey;
+//     fetch(weatherQueryURL)
+//         .then(function (response) {
+//             return response.json();
+//         })
+//         .then(function (res) {
+// // creates forecast div
+//             console.log("Res: " +JSON.stringify(res));
+//             let forecastHTML = `
+//             <h3>5-Day Forecast</h3>
+//             <div ml-10></div>`;
+//             for (let i = 0; i < res.list.length; i++) {
+//                 let day = res.list[i];
+//                 let dayTime = day.dt;
+//                 let timeZone = res.city.timezone;
+//                 let timeZoneHours = timeZone / 60 / 60;
+//                 let thisMoment = moment.unix(dayTime).utc().utcOffset(timeZoneHours);
+//                 let iconURL = "https://openweathermap.org/img/w/" + day.weather[0].icon + ".png";
+// // puts data from API into forecast HTML
+//                 if (thisMoment.format("HH:mm:ss") === "11:00:00" || thisMoment.format("HH:mm:ss") === "12:00:00" || thisMoment.format("HH:mm:ss") === "13:00:00") {
+//                     forecastHTML += `
+//                     <div class="forecast">
+//                         <ul class="text-sm list-unstyled">
+//                             <li><h5>${thisMoment.format("MM/DD/YY")}</h5></li>
+//                             <li><img src="${iconURL}"></li>
+//                             <li>Temp: ${day.main.temp}&#8457;</li>
+//                             <li>Humidity: ${day.main.humidity}%</li>
+//                             <li>Wind Speed: ${day.wind.speed} mph</li>
+//                         </ul>
+//                     </div>`;
+//                 forecastHTML += `</div>`;
+//                 $('#forecast-container').html(forecastHTML);
+//             }}})};
 
 // gets data from park API & calls functions to display data
 function getParkInfo(pCode) {
@@ -110,7 +110,7 @@ function getParkInfo(pCode) {
         .then(function (data) {
             var lat = data.data[0].latitude;
             var long = data.data[0].longitude;
-            getWeatherForecast(lat, long);
+            // getWeatherForecast(lat, long);
             thingsToDo(data.data);
             generalInfo(data.data);
 // local storage function
